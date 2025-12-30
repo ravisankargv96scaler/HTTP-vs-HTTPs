@@ -1,0 +1,5 @@
+{
+  "name": "18-HTTP vs HTTPS",
+  "description": "An interactive educational dashboard demonstrating the core differences between HTTP and HTTPS, including packet structure, MITM attacks, TLS handshakes, and protocol evolution.",
+  "requestFramePermissions": []
+}
