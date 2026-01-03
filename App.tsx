@@ -29,15 +29,26 @@ export default function App() {
       <TabNavigation activeTab={activeTab} onTabChange={setActiveTab} />
       
       <main className="max-w-6xl mx-auto px-4 py-8 pb-20">
-        <div className="mb-8">
-            <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400 mb-2 flex items-center gap-3">
-              <Shield className="text-cyan-400" size={40} />
-              SecurePath
-            </h1>
-            <p className="text-slate-400 text-lg max-w-2xl">
-              An interactive playground to explore how HTTP works, why it's vulnerable, and how HTTPS secures the web.
-            </p>
-        </div>
+        {/* Only show the large banner on the Basics tab as an introduction */}
+        {activeTab === Tab.BASICS && (
+          <div className="mb-8 animate-in fade-in slide-in-from-top-4 duration-500">
+              <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400 mb-2 flex items-center gap-3">
+                <Shield className="text-cyan-400" size={40} />
+                SecurePath
+              </h1>
+              <p className="text-slate-400 text-lg max-w-2xl">
+                An interactive playground to explore how HTTP works, why it's vulnerable, and how HTTPS secures the web.
+              </p>
+          </div>
+        )}
+
+        {/* Compact title for other tabs to keep context without wasting space */}
+        {activeTab !== Tab.BASICS && (
+          <div className="mb-4 flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity">
+            <Shield className="text-cyan-400" size={20} />
+            <span className="text-sm font-bold tracking-widest uppercase text-slate-500">SecurePath</span>
+          </div>
+        )}
 
         <div className="bg-slate-900/50 rounded-2xl p-1 min-h-[600px] transition-all duration-300">
            {renderContent()}
